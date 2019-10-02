@@ -37,7 +37,6 @@ const App = () => {
         const text = reader.result;
         setNumLines(lineCount(text));
         const content = text.replace(/\n/g,'\\\\n')
-        console.log(content)
         setContentString(content)
       };
       reader.readAsText(file);
