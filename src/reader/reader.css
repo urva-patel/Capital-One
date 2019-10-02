@@ -1,0 +1,25 @@
+#resultComponent {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+}
+
+.threeResults {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    width: 50%;
+}
+
+.totalText {
+    font-size: calc(10px + 1.5vmin);
+    font-weight: 700;
+    color: #424242;
+    height: 100px;
+}
+
+.result {
+    color: #e6823f;
+    font-size: calc(10px + 2.5vmin);
+}
