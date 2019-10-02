@@ -87,7 +87,7 @@ const App = () => {
 
         <form id="submitForm" onSubmit={handleSubmit}>
           <label htmlFor="fileInput" className='submitButton'>
-            Upload file
+            Upload File
             <input id='fileInput' type="file" ref={fileInput} onChange={changeName}/>
           </label>
           <div id="fileName">{fileText()}</div>
