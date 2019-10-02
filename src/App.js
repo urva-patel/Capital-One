@@ -87,7 +87,7 @@ const App = () => {
 
         <form id="submitForm" onSubmit={handleSubmit}>
           <label htmlFor="fileInput" className='submitButton'>
-            Upload File
+            Upload
             <input id='fileInput' type="file" ref={fileInput} onChange={changeName}/>
           </label>
           <div id="fileName">{fileText()}</div>
@@ -97,7 +97,7 @@ const App = () => {
       </header>
       <div className='bottom'>
         <div id="robotDiv" className={shareSpace()}>
-          <div id="robotText">Hey there! To Upload your file select 'Upload File' and then select 'Submit' to count the number of comments in it! Supported files are .java, .py, .js, .c, and .cpp</div>
+          <div id="robotText">Hey there! To Upload your file select 'Upload' and then select 'Submit' to count the number of comments in it! Supported files are .java, .py, .js, .c, and .cpp</div>
           <div id="robotImgDiv"><img id="robotImg" src={robot} alt="robotImg"/></div>
         </div>
         <div id="dataComponent" className={showResults()}>{sendData()}</div>
