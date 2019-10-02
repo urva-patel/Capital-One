@@ -83,7 +83,7 @@ const App = () => {
       <div className="layout">
       <header className="top">
         <div id="title">
-          Comment Reader
+          Comment Reader Bot
         </div>
 
         <form id="submitForm" onSubmit={handleSubmit}>
@@ -98,7 +98,7 @@ const App = () => {
       </header>
       <div className='bottom'>
         <div id="robotDiv" className={shareSpace()}>
-          <div id="robotText">Hey there! To Upload your file select 'Choose File' and then select 'Submit' to count the number of comments in it!</div>
+          <div id="robotText">Hey there! To Upload your file select 'Upload File' and then select 'Submit' to count the number of comments in it! Supported files are .java, .py, .js, .c, and .cpp</div>
           <div id="robotImgDiv"><img id="robotImg" src={robot} alt="robotImg"/></div>
         </div>
         <div id="dataComponent" className={showResults()}>{sendData()}</div>
