@@ -12,7 +12,7 @@ const App = () => {
   const [numLines, setNumLines] = useState(0);
   const [fileName, setFileName] = useState(null);
   const [fileExists, setFileExists] = useState(null);
-  const [contentString, setContentString] = useState([])
+  const [contentString, setContentString] = useState([]);
 
   const lineCount = t => {
     var nLines = 0;
@@ -28,7 +28,7 @@ const App = () => {
     event.preventDefault();
     const file = fileInput.current.files[0];
     if(file !== undefined){
-      setFileExists(true)
+      setFileExists(true);
       const fileType = file.name.split('.')[1];
       const ruleResult = getRules(fileType);
       setRules(ruleResult);
@@ -36,18 +36,18 @@ const App = () => {
       reader.onload = function(){
         const text = reader.result;
         setNumLines(lineCount(text));
-        const content = text.replace(/\n/g,'\\\\n')
-        setContentString(content)
+        const content = text.replace(/\n/g,'\\\\n');
+        setContentString(content);
       };
       reader.readAsText(file);
     }
     else {
-      setFileExists(false)
+      setFileExists(false);
     }
     
   }
 
-  const sendData = useCallback( () => {
+  const sendData = useCallback(() => {
     return (
         (rules !== null && numLines !== 0) && 
         <Reader fileContent={contentString} rules={rules} numLines={numLines}/>
@@ -55,31 +55,31 @@ const App = () => {
   }, [contentString, rules, numLines])
 
   const shareSpace = useCallback(() => {
-    return (rules !== null && numLines !== 0) ? "less" : "full"
-  }, [ rules, numLines])
+    return (rules !== null && numLines !== 0) ? "less" : "full";
+  }, [rules, numLines])
 
   const showResults = useCallback(() => {
-    return (rules !== null && numLines !== 0) ? "more" : "none"
-  }, [ rules, numLines])
+    return (rules !== null && numLines !== 0) ? "more" : "none";
+  }, [rules, numLines])
 
   const fileText = useCallback(() => {
-    return fileName !== null ? fileName : "Select A File"
+    return fileName !== null ? fileName : "Select A File";
   }, [fileName])
 
   const errorMessage = useCallback(() => {
-    return fileExists === false && "please upload a file"
+    return fileExists === false && "please upload a file";
   }, [fileExists])
 
   const changeName = (event) => {
-    event.preventDefault()
-    const name = event.target.value
+    event.preventDefault();
+    const name = event.target.value;
     const split = name.split("\\")[2];
     setFileName(split);
   }
 
 
   return (
-      <div className="layout">
+    <div className="layout">
       <header className="top">
         <div id="title">
           Comment Reader Bot
@@ -91,7 +91,7 @@ const App = () => {
             <input id='fileInput' type="file" ref={fileInput} onChange={changeName}/>
           </label>
           <div id="fileName">{fileText()}</div>
-          <button className="submitButton" type="submit" >Submit</button>
+          <button className="submitButton" type="submit">Submit</button>
         </form>
         <div id="error">{errorMessage()}</div>
       </header>

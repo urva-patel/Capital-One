@@ -6,11 +6,11 @@ const Reader = (props) => {
   const fileContent = props.fileContent;
   const numLines = props.numLines;
   const rules = props.rules;
-  const [numComments, setNumComments] = useState(0)
-  const [numBlockLine, setNumBlockLine] = useState(0)
-  const [numSingleline, setNumSingleline] = useState(0)
-  const [numBlocks, setNumBlocks] = useState(0)
-  const [numTodo, setNumTodo] = useState(0)
+  const [numComments, setNumComments] = useState(0);
+  const [numBlockLine, setNumBlockLine] = useState(0);
+  const [numSingleline, setNumSingleline] = useState(0);
+  const [numBlocks, setNumBlocks] = useState(0);
+  const [numTodo, setNumTodo] = useState(0);
 
   const findToDo = (content) => {
     const todoLocations = [];
@@ -80,7 +80,8 @@ const isTodoInComment = (todoLocations, start, end) => {
       if (rules.hasBlock) {
         blockStartWindow = (startBlockOffset + i < fileContent.length
                 ? fileContent.substring(i, startBlockOffset + i)
-                : "")
+                : "");
+                
         inBlockComment = blockStartWindow.includes(rules.beginBlock);
 
         if (foundComment) {
@@ -89,13 +90,13 @@ const isTodoInComment = (todoLocations, start, end) => {
             comments = comments + 1;
             single = single + 1;
             if (isTodoInComment(todoLocations, start, i))
-            todo = todo + 1;
+              todo = todo + 1;
         }
 
         if (inBlockComment) {
             const blockEndIndex = fileContent.indexOf(rules.closeBlock, i);
             if (isTodoInComment(todoLocations, i, blockEndIndex))
-            todo = todo + 1;
+              todo = todo + 1;
         }
 
         while (inBlockComment) {
@@ -167,7 +168,7 @@ const isTodoInComment = (todoLocations, start, end) => {
     setNumBlocks(blocks);
     setNumSingleline(single);
     setNumTodo(todo);
-    setNumBlockLine(blockLines)
+    setNumBlockLine(blockLines);
   }, [fileContent, rules]);
 
 
