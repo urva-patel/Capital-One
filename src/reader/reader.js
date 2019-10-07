@@ -23,16 +23,16 @@ const Reader = (props) => {
         i++;
     }
     return todoLocations;
-}
-
-const isTodoInComment = (todoLocations, start, end) => {
-  for (var ti = 0; ti < todoLocations.length; ti++) {
-      //check if toDo is between start and end
-      if (start < todoLocations[ti] && todoLocations[ti] < end)
-          return true;
   }
-  return false;
-}
+
+  const isTodoInComment = (todoLocations, start, end) => {
+    for (var ti = 0; ti < todoLocations.length; ti++) {
+        //check if toDo is between start and end
+        if (start < todoLocations[ti] && todoLocations[ti] < end)
+            return true;
+    }
+    return false;
+  }
 
   useEffect(() => {
     const todoLocations = findToDo(fileContent);
