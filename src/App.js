@@ -14,10 +14,12 @@ const App = () => {
   const [fileExists, setFileExists] = useState(null);
   const [contentString, setContentString] = useState([]);
 
+  const [fileData, setFileData] = useState(null);
+
   const lineCount = t => {
     var nLines = 0;
     for( var i = 0, n = t.length;  i < n;  ++i ) {
-        if( t.charAt(i) === '\n' ) {
+        if(t.charAt(i) === '\n') {
             ++nLines;
         }
     }
@@ -27,13 +29,17 @@ const App = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
     const file = fileInput.current.files[0];
-    if(file !== undefined){
+    setFileData(file);
+    if (file === fileData){
+      return null
+    }
+    else if(file !== undefined){
       setFileExists(true);
       const fileType = file.name.split('.')[1];
       const ruleResult = getRules(fileType);
       setRules(ruleResult);
       const reader = new FileReader();
-      reader.onload = function(){
+      reader.onload = () => {
         const text = reader.result;
         setNumLines(lineCount(text));
         const content = text.replace(/\n/g,'\\\\n');
@@ -84,7 +90,6 @@ const App = () => {
         <div id="title">
           Comment Reader Bot
         </div>
-
         <form id="submitForm" onSubmit={handleSubmit}>
           <label htmlFor="fileInput" className='submitButton'>
             Upload
